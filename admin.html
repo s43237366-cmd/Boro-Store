@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Boro Store — Admin Panel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        BORO<span>.</span>
+        <small>ADMIN</small>
+      </div>
+
+      <nav>
+
+        <button class="side-link active" data-section="dashboard">
+          <span>01</span>
+          Dashboard
+        </button>
+
+        <button class="side-link" data-section="products">
+          <span>02</span>
+          Products
+        </button>
+
+        <button class="side-link" data-section="add">
+          <span>03</span>
+          Add Product
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <a href="../index.html">
+          ← Back to Store
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="admin-main">
+
+      <header class="admin-header">
+
+        <div>
+          <span class="admin-eyebrow">BORO STORE</span>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+
+        <div class="admin-user">
+          <div class="avatar">B</div>
+
+          <div>
+            <strong>Administrator</strong>
+            <span>Store Manager</span>
+          </div>
+        </div>
+
+      </header>
+
+
+      <!-- Dashboard -->
+
+      <section
+        class="admin-section active"
+        id="dashboardSection"
+      >
+
+        <div class="welcome-card">
+
+          <div>
+            <span class="admin-eyebrow">OVERVIEW</span>
+
+            <h2>
+              Welcome back.
+            </h2>
+
+            <p>
+              Manage your Boro Store products and keep your catalog fresh.
+            </p>
+          </div>
+
+          <div class="welcome-number">
+            BORO.
+          </div>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <span>Total Products</span>
+            <strong id="totalProducts">0</strong>
+            <small>In your catalog</small>
+          </div>
+
+          <div class="stat-card">
+            <span>Categories</span>
+            <strong id="totalCategories">0</strong>
+            <small>Product categories</small>
+          </div>
+
+          <div class="stat-card">
+            <span>Store Status</span>
+            <strong>Live</strong>
+            <small>Local demo mode</small>
+          </div>
+
+          <div class="stat-card">
+            <span>Orders</span>
+            <strong id="orderCount">0</strong>
+            <small>Demo orders</small>
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="admin-eyebrow">CATALOG</span>
+                <h3>Recent products</h3>
+              </div>
+
+              <button
+                class="small-button"
+                data-open-section="products"
+              >
+                View all
+              </button>
+            </div>
+
+            <div id="recentProducts"></div>
+
+          </div>
+
+
+          <div class="panel quick-panel">
+
+            <span class="admin-eyebrow">QUICK ACTION</span>
+
+            <h3>Add a new product</h3>
+
+            <p>
+              Create a product and it will immediately appear in your store.
+            </p>
+
+            <button
+              class="primary-button"
+              data-open-section="add"
+            >
+              + Add Product
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Products -->
+
+      <section
+        class="admin-section"
+        id="productsSection"
+      >
+
+        <div class="section-top">
+
+          <div>
+            <span class="admin-eyebrow">CATALOG</span>
+            <h2>All Products</h2>
+          </div>
+
+          <button
+            class="primary-button"
+            data-open-section="add"
+          >
+            + Add Product
+          </button>
+
+        </div>
+
+
+        <div class="product-management">
+
+          <div class="management-tools">
+
+            <input
+              type="text"
+              id="adminSearch"
+              placeholder="Search products..."
+            >
+
+            <select id="adminCategory">
+              <option value="All">All categories</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Technology">Technology</option>
+            </select>
+
+          </div>
+
+          <div
+            class="admin-products-table"
+            id="adminProducts"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Add / Edit -->
+
+      <section
+        class="admin-section"
+        id="addSection"
+      >
+
+        <div class="section-top">
+
+          <div>
+            <span class="admin-eyebrow">PRODUCT MANAGEMENT</span>
+            <h2 id="formTitle">Add Product</h2>
+          </div>
+
+        </div>
+
+
+        <div class="editor-layout">
+
+          <form id="productForm" class="product-form">
+
+            <input type="hidden" id="productId">
+
+            <div class="form-group">
+              <label>Product name</label>
+
+              <input
+                id="productName"
+                required
+                type="text"
+                placeholder="Example: Premium Jacket"
+              >
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="form-group">
+                <label>Price</label>
+
+                <input
+                  id="productPrice"
+                  required
+                  min="0"
+                  step="0.01"
+                  type="number"
+                  placeholder="99"
+                >
+              </div>
+
+              <div class="form-group">
+                <label>Category</label>
+
+                <select id="productCategory" required>
+                  <option value="">Select category</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Shoes">Shoes</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Technology">Technology</option>
+                </select>
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+              <label>Image URL</label>
+
+              <input
+                id="productImage"
+                required
+                type="url"
+                placeholder="https://..."
+              >
+
+              <small>
+                Use an image URL for this demo.
+              </small>
+            </div>
+
+
+            <div class="form-group">
+              <label>Badge</label>
+
+              <input
+                id="productBadge"
+                type="text"
+                placeholder="New"
+              >
+            </div>
+
+
+            <div class="form-group">
+              <label>Description</label>
+
+              <textarea
+                id="productDescription"
+                required
+                rows="6"
+                placeholder="Write product description..."
+              ></textarea>
+            </div>
+
+
+            <div class="form-buttons">
+
+              <button
+                type="submit"
+                class="primary-button"
+                id="saveProductBtn"
+              >
+                Save Product
+              </button>
+
+              <button
+                type="button"
+                class="secondary-button"
+                id="cancelEdit"
+              >
+                Cancel
+              </button>
+
+            </div>
+
+          </form>
+
+
+          <div class="preview-card">
+
+            <span class="admin-eyebrow">LIVE PREVIEW</span>
+
+            <div class="preview-image">
+              <img
+                id="previewImage"
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=85"
+                alt="Preview"
+              >
+            </div>
+
+            <div class="preview-info">
+
+              <span id="previewCategory">
+                CATEGORY
+              </span>
+
+              <h3 id="previewName">
+                Product Name
+              </h3>
+
+              <strong id="previewPrice">
+                $0.00
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- Delete Modal -->
+
+  <div class="confirm-overlay" id="deleteModal">
+
+    <div class="confirm-box">
+
+      <button id="closeDelete" class="close-confirm">
+        ×
+      </button>
+
+      <span class="admin-eyebrow">DELETE PRODUCT</span>
+
+      <h2>Remove this product?</h2>
+
+      <p>
+        This action will remove the product from the demo store.
+      </p>
+
+      <div class="confirm-buttons">
+
+        <button
+          id="confirmDelete"
+          class="delete-button"
+        >
+          Delete
+        </button>
+
+        <button
+          id="cancelDelete"
+          class="secondary-button"
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="admin-toast" id="adminToast">
+    Product saved successfully.
+  </div>
+
+
+  <script src="admin.js"></script>
+</body>
+</html>

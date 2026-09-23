@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Boro Store — Modern E-Commerce</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Loading -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">BORO<span>.</span></div>
+    <div class="loader-line"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        BORO<span>.</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <button class="icon-btn" id="themeBtn" title="Dark mode">
+          <span id="themeIcon">☾</span>
+        </button>
+
+        <button class="icon-btn cart-button" id="cartBtn">
+          <span>Bag</span>
+          <b id="cartCount">0</b>
+        </button>
+
+        <a href="admin/admin.html" class="admin-link">
+          Admin
+        </a>
+
+        <button class="mobile-menu" id="mobileMenu">
+          ☰
+        </button>
+
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+      <a href="admin/admin.html">Admin Panel</a>
+    </div>
+  </header>
+
+
+  <!-- Hero -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+
+      <div class="container hero-content">
+
+        <div class="hero-text">
+          <span class="eyebrow">NEW COLLECTION 2026</span>
+
+          <h1>
+            Designed for
+            <span>your lifestyle.</span>
+          </h1>
+
+          <p>
+            Discover carefully selected fashion, accessories and essentials
+            created for modern everyday life.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#shop" class="btn btn-dark">
+              Explore Collection
+              <span>→</span>
+            </a>
+
+            <a href="#categories" class="text-link">
+              View Categories
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <strong>500+</strong>
+              <span>Products</span>
+            </div>
+
+            <div>
+              <strong>24/7</strong>
+              <span>Support</span>
+            </div>
+
+            <div>
+              <strong>4.9</strong>
+              <span>Customer rating</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Categories -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">EXPLORE</span>
+            <h2>Shop by category</h2>
+          </div>
+
+          <p>
+            Find pieces that fit your style.
+          </p>
+        </div>
+
+        <div class="category-grid">
+
+          <button class="category-card" data-category="Fashion">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Fashion">
+            <div>
+              <span>01</span>
+              <h3>Fashion</h3>
+            </div>
+          </button>
+
+          <button class="category-card" data-category="Shoes">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85" alt="Shoes">
+            <div>
+              <span>02</span>
+              <h3>Shoes</h3>
+            </div>
+          </button>
+
+          <button class="category-card" data-category="Accessories">
+            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85" alt="Accessories">
+            <div>
+              <span>03</span>
+              <h3>Accessories</h3>
+            </div>
+          </button>
+
+          <button class="category-card" data-category="Technology">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=85" alt="Technology">
+            <div>
+              <span>04</span>
+              <h3>Technology</h3>
+            </div>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Shop -->
+    <section class="shop-section" id="shop">
+      <div class="container">
+
+        <div class="section-heading shop-heading">
+          <div>
+            <span class="eyebrow">OUR STORE</span>
+            <h2>Featured products</h2>
+          </div>
+
+          <div class="shop-tools">
+
+            <div class="search-box">
+              <span>⌕</span>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+              >
+            </div>
+
+            <select id="categoryFilter">
+              <option value="All">All categories</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Technology">Technology</option>
+            </select>
+
+          </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+
+        <div class="no-products" id="noProducts">
+          <div>⌕</div>
+          <h3>No products found</h3>
+          <p>Try another search or category.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Banner -->
+    <section class="promo">
+      <div class="container promo-inner">
+
+        <div>
+          <span class="eyebrow">BORO MEMBERS</span>
+          <h2>Simple. Modern. Yours.</h2>
+          <p>
+            Get access to new collections and special offers.
+          </p>
+        </div>
+
+        <button class="btn btn-light" id="promoBtn">
+          Discover More →
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- About -->
+    <section class="about-section" id="about">
+      <div class="container about-grid">
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85"
+            alt="Boro Store"
+          >
+        </div>
+
+        <div class="about-text">
+          <span class="eyebrow">ABOUT BORO</span>
+
+          <h2>
+            A modern store built around
+            <span>better choices.</span>
+          </h2>
+
+          <p>
+            Boro Store is a professional e-commerce concept focused on
+            clean design, quality products and a simple shopping experience.
+          </p>
+
+          <div class="about-features">
+            <div>
+              <strong>01</strong>
+              <span>Curated products</span>
+            </div>
+
+            <div>
+              <strong>02</strong>
+              <span>Secure checkout</span>
+            </div>
+
+            <div>
+              <strong>03</strong>
+              <span>Fast support</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal">
+
+    <div class="product-modal">
+
+      <button class="modal-close" id="productModalClose">×</button>
+
+      <div class="modal-product-grid">
+
+        <div class="modal-image">
+          <img id="modalImage" src="" alt="">
+        </div>
+
+        <div class="modal-info">
+
+          <span class="modal-category" id="modalCategory">
+            CATEGORY
+          </span>
+
+          <h2 id="modalTitle">Product</h2>
+
+          <div class="modal-price" id="modalPrice">
+            $0
+          </div>
+
+          <p id="modalDescription">
+            Product description.
+          </p>
+
+          <div class="modal-meta">
+            <span>✓ In stock</span>
+            <span>✓ Premium quality</span>
+          </div>
+
+          <button class="btn btn-dark full-btn" id="modalAdd">
+            Add to Bag
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Cart -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">YOUR SHOPPING BAG</span>
+        <h2>Cart</h2>
+      </div>
+
+      <button id="cartClose">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-empty" id="cartEmpty">
+      <div class="empty-icon">○</div>
+      <h3>Your bag is empty</h3>
+      <p>Add something you love.</p>
+    </div>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+
+      <button class="btn btn-dark full-btn" id="checkoutBtn">
+        Checkout →
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- Checkout -->
+  <div class="modal-overlay" id="checkoutModal">
+
+    <div class="checkout-modal">
+
+      <button class="modal-close" id="checkoutClose">×</button>
+
+      <span class="eyebrow">CHECKOUT</span>
+      <h2>Complete your order</h2>
+
+      <form id="checkoutForm">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input required type="text" placeholder="John">
+          </div>
+
+          <div class="form-group">
+            <label>Last name</label>
+            <input required type="text" placeholder="Doe">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input required type="email" placeholder="john@example.com">
+        </div>
+
+        <div class="form-group">
+          <label>Address</label>
+          <input required type="text" placeholder="Your address">
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label>City</label>
+            <input required type="text" placeholder="Dushanbe">
+          </div>
+
+          <div class="form-group">
+            <label>Payment</label>
+
+            <select required>
+              <option value="">Select</option>
+              <option>Card</option>
+              <option>Cash on delivery</option>
+              <option>Online payment</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <button class="btn btn-dark full-btn" type="submit">
+          Place Order
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- Success -->
+  <div class="success-toast" id="successToast">
+    <div class="success-icon">✓</div>
+    <div>
+      <strong>Order completed</strong>
+      <span>Thank you for shopping with Boro.</span>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div>
+        <a href="#" class="logo">BORO<span>.</span></a>
+        <p>
+          Modern e-commerce experience.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div>
+        <h4>Store</h4>
+        <p>Dushanbe, Tajikistan</p>
+        <p>support@borostore.demo</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Boro Store. Demo project.
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
